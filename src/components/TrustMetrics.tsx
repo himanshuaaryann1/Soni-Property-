@@ -82,6 +82,8 @@ export default function TrustMetrics() {
           <div style={{ width: '3px', height: '36px', backgroundColor: '#1D4ED8', flexShrink: 0 }} />
           <p className="text-sm text-gray-500 italic" style={{ fontFamily: 'Inter, sans-serif' }}>
               Trusted by over 1,200 families across Mohali, Chandigarh and Punjab with a 4.9★ client rating — built on transparency, expertise, and local market knowledge.
+          </p>
+        </div>
         <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 divide-x divide-gray-100">
           {metrics.map((m, i) => (
             <MetricCard key={m.label} {...m} index={i} inView={inView} />
