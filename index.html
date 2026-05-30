@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Soni Properties — Premium Real Estate in Mohali</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+    
+    <!-- ==================== ARENA PROTECTION SCRIPT ==================== -->
+    <!-- Pre-execution script to block Arena from loading -->
+    <script>
+      // Intercept dynamic script loading
+      const originalCreateElement = document.createElement;
+      document.createElement = function(tagName, options) {
+        const element = originalCreateElement.call(document, tagName, options);
+        if (tagName.toLowerCase() === 'script') {
+          const originalSetAttribute = element.setAttribute;
+          element.setAttribute = function(name, value) {
+            if (name.toLowerCase() === 'src' && value.toLowerCase().includes('arena')) {
+              console.warn('[Arena Protection] Blocked script loading: ' + value);
+              return;
+            }
+            return originalSetAttribute.call(this, name, value);
+          };
+        }
+        return element;
+      };
+      
+      // Block fetch requests to Arena domains
+      const originalFetch = window.fetch;
+      window.fetch = function(...args) {
+        const url = String(args[0]).toLowerCase();
+        if (url.includes('arena')) {
+          console.warn('[Arena Protection] Blocked fetch request: ' + args[0]);
+          return Promise.reject(new Error('Arena blocked'));
+        }
+        return originalFetch.apply(this, args);
+      };
+      
+      // Block XMLHttpRequest to Arena
+      const originalOpen = XMLHttpRequest.prototype.open;
+      XMLHttpRequest.prototype.open = function(method, url) {
+        if (String(url).toLowerCase().includes('arena')) {
+          console.warn('[Arena Protection] Blocked XHR request: ' + url);
+          return;
+        }
+        return originalOpen.apply(this, arguments);
+      };
+    </script>
+    <!-- ==================== END ARENA PROTECTION ==================== -->
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

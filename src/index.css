@@ -1,0 +1,233 @@
+@import "tailwindcss";
+
+* {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  color: #111827;
+  background-color: #ffffff;
+}
+
+h1, h2, h3, h4 {
+  font-family: 'Playfair Display', serif;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.animate-fadeInUp {
+  animation: fadeInUp 0.7s ease forwards;
+}
+
+.animate-fadeIn {
+  animation: fadeIn 0.6s ease forwards;
+}
+
+.delay-100 { animation-delay: 0.1s; }
+.delay-200 { animation-delay: 0.2s; }
+.delay-300 { animation-delay: 0.3s; }
+.delay-400 { animation-delay: 0.4s; }
+.delay-500 { animation-delay: 0.5s; }
+.delay-600 { animation-delay: 0.6s; }
+
+.section-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 2.5rem;
+  font-weight: 600;
+  color: #111827;
+  line-height: 1.2;
+}
+
+.section-subtitle {
+  font-family: 'Inter', sans-serif;
+  font-size: 1rem;
+  color: #6B7280;
+  line-height: 1.7;
+}
+
+.btn-primary {
+  background-color: #1D4ED8;
+  color: white;
+  padding: 14px 32px;
+  font-family: 'Inter', sans-serif;
+  font-weight: 500;
+  font-size: 0.95rem;
+  letter-spacing: 0.02em;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.15s ease;
+  display: inline-block;
+}
+
+.btn-primary:hover {
+  background-color: #1e40af;
+}
+
+.btn-outline {
+  background-color: transparent;
+  color: #1D4ED8;
+  padding: 13px 32px;
+  font-family: 'Inter', sans-serif;
+  font-weight: 500;
+  font-size: 0.95rem;
+  letter-spacing: 0.02em;
+  border: 1.5px solid #1D4ED8;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: inline-block;
+}
+
+.btn-outline:hover {
+  background-color: #1D4ED8;
+  color: white;
+}
+
+.divider-line {
+  width: 48px;
+  height: 3px;
+  background-color: #1D4ED8;
+  margin-bottom: 24px;
+}
+
+input, select, textarea {
+  font-family: 'Inter', sans-serif;
+}
+
+/* Prevent layout shift for images */
+img {
+  display: block;
+}
+
+/* Smooth transition for all interactive elements */
+a, button {
+  transition: all 0.2s ease;
+}
+
+.property-card:hover .property-image {
+  transform: scale(1.04);
+}
+
+/* ==================== ARENA PROTECTION RULES ==================== */
+/* Block all Arena-related elements from rendering */
+
+/* Hide iframes with Arena URLs */
+iframe[src*="arena"],
+iframe[src*="Arena"],
+iframe[src*="ARENA"] {
+  display: none !important;
+  visibility: hidden !important;
+  width: 0 !important;
+  height: 0 !important;
+  border: none !important;
+  pointer-events: none !important;
+}
+
+/* Hide elements with Arena class names */
+[class*="arena"],
+[class*="Arena"],
+[class*="ARENA"],
+[class*="-arena"],
+[class*="-Arena"] {
+  display: none !important;
+  visibility: hidden !important;
+  width: 0 !important;
+  height: 0 !important;
+  pointer-events: none !important;
+}
+
+/* Hide elements with Arena ID */
+[id*="arena"],
+[id*="Arena"],
+[id*="ARENA"],
+[id*="-arena"],
+[id*="-Arena"] {
+  display: none !important;
+  visibility: hidden !important;
+  width: 0 !important;
+  height: 0 !important;
+  pointer-events: none !important;
+}
+
+/* Block Arena scripts */
+script[src*="arena"],
+script[src*="Arena"],
+script[src*="ARENA"] {
+  display: none !important;
+}
+
+/* Hide data attributes containing Arena */
+[data-arena],
+[data-provider*="arena"],
+[data-provider*="Arena"] {
+  display: none !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
+}
+
+/* Block Arena overlays and popups */
+.arena-overlay,
+.arena-popup,
+.arena-widget,
+.arena-banner,
+.arena-watermark,
+.arena-floating,
+[role="dialog"][class*="arena"],
+[role="complementary"][class*="arena"] {
+  display: none !important;
+  visibility: hidden !important;
+  width: 0 !important;
+  height: 0 !important;
+  pointer-events: none !important;
+  z-index: -9999 !important;
+}
+
+/* Block dynamically injected divs */
+div[class*="arena-"],
+div[id*="arena-"],
+div[style*="arena"] {
+  display: none !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
+}
+
+/* Ensure no floating elements from Arena */
+[style*="position: fixed"][class*="arena"],
+[style*="position: fixed"][id*="arena"],
+[style*="position: absolute"][class*="arena"],
+[style*="position: absolute"][id*="arena"] {
+  display: none !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
+}
+
+/* Hide any elements with Arena in data attributes */
+[data-*="arena"] {
+  display: none !important;
+  visibility: hidden !important;
+}
+
+/* Block iframes with common overlay patterns */
+iframe[title*="arena"],
+iframe[title*="Arena"],
+iframe[style*="z-index: 999"],
+iframe[style*="z-index: 9999"] {
+  display: none !important;
+  visibility: hidden !important;
+  width: 0 !important;
+  height: 0 !important;
+}
